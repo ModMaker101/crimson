@@ -1,0 +1,827 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crimson - The Future of Programming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Highlight.js CSS for dark theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #282828; /* Dark grey background */
+            color: #d0d0d0; /* Light grey text color */
+            -webkit-font-smoothing: antialiased; /* For smoother fonts */
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll due to initial animation positions */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #dc2626; /* Vibrant red */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+            header .flex-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            header h1 {
+                color: #ffffff; /* White text */
+                font-size: 2.25rem; /* text-3xl */
+                font-weight: 700; /* font-bold */
+                border-radius: 0.375rem; /* rounded-md */
+                padding: 0.25rem 0.75rem; /* px-3 py-1 */
+            }
+
+            header nav ul {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                gap: 1.5rem; /* space-x-6 */
+            }
+
+                header nav ul li a {
+                    color: #ffffff; /* White text */
+                    text-decoration: none;
+                    font-weight: 600; /* font-semibold */
+                    transition: color 0.3s ease;
+                }
+
+                    header nav ul li a:hover {
+                        color: #b0b0b0; /* Light grey on hover */
+                    }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, #8b0000, #dc2626); /* Gradient from red-800 to crimson-red */
+            color: #ffffff; /* White text */
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+
+            .hero-section h2 {
+                font-size: 3rem; /* text-5xl */
+                font-weight: 800; /* font-extrabold */
+                margin-bottom: 1rem;
+                line-height: 1.25; /* leading-tight */
+            }
+
+                .hero-section h2 span {
+                    display: block;
+                    color: #b0b0b0; /* Light grey */
+                }
+
+            .hero-section p {
+                font-size: 1.25rem; /* text-xl */
+                margin-bottom: 2rem;
+                max-width: 42rem; /* max-w-2xl */
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-section .button {
+                display: inline-block;
+                background-color: #ffffff; /* White background */
+                color: #dc2626; /* Crimson red text */
+                font-weight: 700; /* font-bold */
+                padding: 0.75rem 2rem; /* py-3 px-8 */
+                border-radius: 9999px; /* rounded-full */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                text-decoration: none;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+
+                .hero-section .button:hover {
+                    background-color: #f3f4f6; /* Light grey on hover */
+                    transform: scale(1.05);
+                }
+
+        /* About Section */
+        #about {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            background-color: #383838; /* Slightly lighter dark grey */
+        }
+
+            #about h3 {
+                font-size: 2.25rem; /* text-4xl */
+                font-weight: 700; /* font-bold */
+                text-align: center;
+                margin-bottom: 3rem;
+                color: #dc2626; /* Crimson red */
+            }
+
+            #about .grid-container {
+                display: grid;
+                gap: 3rem; /* gap-12 */
+                align-items: center;
+            }
+
+        @media (min-width: 768px) { /* md:grid-cols-2 */
+            #about .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        #about p {
+            font-size: 1.125rem; /* text-lg */
+            line-height: 1.625; /* leading-relaxed */
+            margin-bottom: 1rem;
+        }
+
+        #about img {
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
+            display: block; /* To remove extra space below image */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section */
+        #features {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            background-color: #2d2d2d; /* Darker grey */
+        }
+
+            #features h3 {
+                font-size: 2.25rem; /* text-4xl */
+                font-weight: 700; /* font-bold */
+                text-align: center;
+                margin-bottom: 3rem;
+                color: #dc2626; /* Crimson red */
+            }
+
+            #features .grid-container {
+                display: grid;
+                gap: 2rem; /* gap-8 */
+            }
+
+        @media (min-width: 768px) { /* md:grid-cols-3 */
+            #features .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        #features .feature-card {
+            background-color: #383838; /* Slightly lighter dark grey */
+            padding: 2rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dc2626; /* Crimson red border */
+            transition: transform 0.3s ease;
+            text-align: center;
+            opacity: 0; /* Initially hidden for animation */
+            transform: translateY(20px); /* Start slightly below for animation */
+        }
+
+            #features .feature-card:hover {
+                transform: scale(1.05);
+            }
+
+            #features .feature-card .icon {
+                color: #dc2626; /* Crimson red */
+                font-size: 3rem; /* text-5xl */
+                margin-bottom: 1rem;
+            }
+
+            #features .feature-card h4 {
+                font-size: 1.5rem; /* text-2xl */
+                font-weight: 600; /* font-semibold */
+                margin-bottom: 0.75rem;
+                color: #ffffff; /* White text */
+            }
+
+            #features .feature-card p {
+                color: #b0b0b0; /* Light grey */
+            }
+
+        /* Examples Section */
+        #examples {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            background-color: #383838; /* Slightly lighter dark grey */
+        }
+
+            #examples h3 {
+                font-size: 2.25rem; /* text-4xl */
+                font-weight: 700; /* font-bold */
+                text-align: center;
+                margin-bottom: 3rem;
+                color: #dc2626; /* Crimson red */
+            }
+
+            #examples .example-block {
+                margin-bottom: 2.5rem; /* mb-10 */
+                opacity: 0; /* Initially hidden for animation */
+                transform: translateX(-50px); /* Start off-screen left for animation */
+            }
+
+                #examples .example-block h4 {
+                    font-size: 1.5rem; /* text-2xl */
+                    font-weight: 600; /* font-semibold */
+                    margin-bottom: 1rem;
+                    color: #ffffff; /* White text */
+                }
+
+        .code-block {
+            background-color: #2d2d2d; /* Darker background for code */
+            border-left: 4px solid #dc2626; /* Red border on the left */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto; /* Enable horizontal scrolling for long lines */
+        }
+
+            /* Highlight.js specific styling for pre and code tags */
+            .code-block pre {
+                margin: 0;
+                white-space: pre-wrap; /* Wrap long lines */
+                word-break: break-all; /* Break words if necessary */
+            }
+
+                .code-block pre code {
+                    display: block; /* Ensures the code block takes full width */
+                    padding: 0; /* Remove default padding from highlight.js code tag */
+                }
+
+        /* Download Section */
+        #download {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            background-color: #dc2626; /* Crimson red */
+            color: #ffffff; /* White text */
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+
+            #download h3 {
+                font-size: 2.25rem; /* text-4xl */
+                font-weight: 700; /* font-bold */
+                margin-bottom: 1.5rem;
+            }
+
+            #download p {
+                font-size: 1.25rem; /* text-xl */
+                margin-bottom: 2rem;
+                max-width: 42rem; /* max-w-2xl */
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #download .button {
+                display: inline-block;
+                background-color: #ffffff; /* White background */
+                color: #dc2626; /* Crimson red text */
+                font-weight: 700; /* font-bold */
+                padding: 0.75rem 2rem; /* py-3 px-8 */
+                border-radius: 9999px; /* rounded-full */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                text-decoration: none;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+
+                #download .button:hover {
+                    background-color: #f3f4f6; /* Light grey on hover */
+                    transform: scale(1.05);
+                }
+
+            #download .placeholder-text {
+                margin-top: 1rem;
+                font-size: 0.875rem; /* text-sm */
+                color: #b0b0b0; /* Light grey */
+            }
+
+        /* Footer Section */
+        footer {
+            background-color: #1a1a1a; /* Very dark grey */
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            text-align: center;
+            color: #a0a0a0; /* Medium grey */
+        }
+
+            footer p {
+                margin-bottom: 0.5rem;
+            }
+
+            footer a {
+                color: #a0a0a0; /* Medium grey */
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+                footer a:hover {
+                    color: #dc2626; /* Crimson red on hover */
+                }
+
+        /* REPL Section Styles */
+        #repl-section {
+            padding: 4rem 1rem;
+            background-color: #2d2d2d;
+            border-top: 1px solid #444;
+            text-align: center;
+        }
+
+            #repl-section h3 {
+                font-size: 2.25rem;
+                font-weight: 700;
+                margin-bottom: 2rem;
+                color: #dc2626;
+            }
+
+        .repl-container {
+            background-color: #1a1a1a;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border: 1px solid #dc2626;
+        }
+
+        .repl-input-area {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        #repl-input {
+            flex-grow: 1;
+            background-color: #383838;
+            border: 1px solid #555;
+            border-radius: 0.375rem;
+            padding: 0.75rem 1rem;
+            color: #d0d0d0;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace; /* Monospace font for code */
+            font-size: 1rem;
+            outline: none;
+            resize: vertical; /* Allow vertical resizing */
+            min-height: 80px; /* Minimum height for textarea */
+        }
+
+            #repl-input::placeholder {
+                color: #888;
+            }
+
+        #repl-run-button {
+            background-color: #dc2626;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap; /* Prevent button text from wrapping */
+        }
+
+            #repl-run-button:hover {
+                background-color: #a00000;
+                transform: translateY(-2px);
+            }
+
+        .repl-output-area {
+            background-color: #0d0d0d;
+            border: 1px solid #444;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            min-height: 100px;
+            max-height: 300px; /* Limit height and make scrollable */
+            overflow-y: auto;
+            text-align: left;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: #d0d0d0;
+            white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+            word-break: break-all; /* Break words if necessary */
+        }
+
+        .repl-output-line {
+            padding: 0.2rem 0;
+            border-bottom: 1px dashed #333;
+        }
+
+            .repl-output-line:last-child {
+                border-bottom: none;
+            }
+
+            .repl-output-line.error {
+                color: #ff6b6b; /* Light red for errors */
+            }
+
+            .repl-output-line.input-echo {
+                color: #888; /* Grey for echoed input */
+                font-style: italic;
+            }
+
+        /* Responsive adjustments for REPL */
+        @media (max-width: 600px) {
+            .repl-input-area {
+                flex-direction: column;
+            }
+
+            #repl-run-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header>
+        <div class="container flex-container">
+            <h1>Crimson</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#repl-section">REPL</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <h2>
+                Unleash the Power of <span class="hero-span-text">Crimson</span>
+            </h2>
+            <p class="hero-description">
+                A modern, efficient, and expressive programming language designed for performance and developer happiness.
+            </p>
+            <a href="#download" class="button hero-button">
+                Get Started with Crimson
+            </a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h3 class="animate-on-scroll">About Crimson</h3>
+            <div class="grid-container">
+                <div class="about-text animate-on-scroll">
+                    <p>
+                        Crimson is a revolutionary new programming language built from the ground up to address the challenges of modern software development. It combines the best aspects of established languages with innovative features to provide an unparalleled development experience.
+                    </p>
+                    <p>
+                        Our focus is on creating a language that is not only powerful and fast but also intuitive and enjoyable to write. With a clean syntax and robust standard library, Crimson empowers developers to build complex applications with ease and confidence.
+                    </p>
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center;" class="about-image animate-on-scroll">
+                    <img src="https://placehold.co/600x400/dc2626/ffffff?text=Crimson+Logo" alt="Crimson Logo Placeholder">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h3 class="animate-on-scroll">Key Features</h3>
+            <div class="grid-container">
+                <div class="feature-card">
+                    <div class="icon">💡</div>
+                    <h4>Modern Syntax</h4>
+                    <p>
+                        Enjoy a clean, concise, and expressive syntax that makes code a joy to read and write.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h4>High Performance</h4>
+                    <p>
+                        Built for speed, Crimson leverages advanced optimizations to deliver exceptional performance.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h4>Memory Safety</h4>
+                    <p>
+                        Designed with memory safety in mind, reducing common programming errors and vulnerabilities.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🌐</div>
+                    <h4>Concurrency Built-in</h4>
+                    <p>
+                        Easily write concurrent and parallel applications with Crimson's native concurrency features.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📦</div>
+                    <h4>Rich Ecosystem</h4>
+                    <p>
+                        A growing ecosystem of libraries and tools to support your development needs.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🤝</div>
+                    <h4>Community Driven</h4>
+                    <p>
+                        An active and supportive community contributing to the language's evolution.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="examples">
+        <div class="container">
+            <h3 class="animate-on-scroll">Crimson Code Examples</h3>
+
+            <div class="example-block animate-on-scroll">
+                <h4>Hello World!</h4>
+                <div class="code-block">
+<pre><code class="language-javascript">
+print("Hello, World!");
+</code></pre>
+                </div>
+                <p style="margin-top: 1rem; color: #b0b0b0;">A classic start. The `print` statement outputs text to the console.</p>
+            </div>
+
+            <div class="example-block animate-on-scroll">
+                <h4>Variable Declaration and Type Inference</h4>
+                <div class="code-block">
+<pre><code class="language-javascript">
+var message: string = "Crimson is awesome!";
+var year = 2025; // Type inferred as int
+print($"{message} in {year}");
+</code></pre>
+                </div>
+                <p style="margin-top: 1rem; color: #b0b0b0;">Variables can be declared with explicit types or allow type inference. String interpolation makes output easy.</p>
+            </div>
+
+            <div class="example-block animate-on-scroll">
+                <h4>Function Definition and Call</h4>
+                <div class="code-block">
+<pre><code class="language-javascript">
+func add(a: int, b: int): int {
+    return a + b;
+}
+
+func main() {
+    var result = add(5, 3);
+    print($"5 + 3 = {result}");
+}
+
+main(); // Call the main function
+</code></pre>
+                </div>
+                <p style="margin-top: 1rem; color: #b0b0b0;">Define functions with type-annotated parameters and return types. Functions are first-class citizens.</p>
+            </div>
+
+            <div class="example-block animate-on-scroll">
+                <h4>Conditional Logic (If-Else)</h4>
+                <div class="code-block">
+<pre><code class="language-javascript">
+var temperature = 25;
+
+if (temperature > 30) {
+    print("It's hot!");
+} else if (temperature > 20) {
+    print("It's warm.");
+} else {
+    print("It's cool.");
+}
+</code></pre>
+                </div>
+                <p style="margin-top: 1rem; color: #b0b0b0;">Standard `if-else if-else` constructs for branching logic.</p>
+            </div>
+
+            <div class="example-block animate-on-scroll">
+                <h4>Loops (For Loop)</h4>
+                <div class="code-block">
+<pre><code class="language-javascript">
+for (var i = 0; i < 5; i = i + 1) {
+    print($"Iteration: {i}");
+}
+</code></pre>
+                </div>
+                <p style="margin-top: 1rem; color: #b0b0b0;">Iterate through a range with a `for` loop.</p>
+            </div>
+
+            <div class="example-block animate-on-scroll">
+                <h4>Class and Object (Basic)</h4>
+                <div class="code-block">
+<pre><code class="language-javascript">
+class Dog {
+    var name: string;
+
+    func constructor(n: string) {
+        this.name = n;
+    }
+
+    func bark() {
+        print($"{this.name} says Woof!");
+    }
+}
+
+var myDog = new Dog("Buddy");
+myDog.bark();
+</code></pre>
+                </div>
+                <p style="margin-top: 1rem; color: #b0b0b0;">Demonstrates basic class definition, constructor, fields, and methods.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="repl-section">
+        <div class="container">
+            <h3 class="animate-on-scroll">Try Crimson (Simulated REPL)</h3>
+            <div class="repl-container animate-on-scroll">
+                <div class="repl-input-area">
+                    <textarea id="repl-input" placeholder="Write your Crimson code here..."></textarea>
+                    <button id="repl-run-button">Run Code</button>
+                </div>
+                <div id="repl-output" class="repl-output-area">
+                    <div class="repl-output-line">Welcome to the Crimson JS REPL (Simulated)!</div>
+                    <div class="repl-output-line">This REPL attempts to interpret a subset of actual Crimson syntax.</div>
+                    <div class="repl-output-line">Try the examples from the "Crimson Code Examples" section above, or these:</div>
+                    <div class="repl-output-line">print("Hello, World!");</div>
+                    <div class="repl-output-line">var x: int = 10; print("X is {x}");</div>
+                    <div class="repl-output-line">fn greet(name: string) { print("Hello, {name}!"); } fn main() { greet("REPL User"); }</div>
+                    <div class="repl-output-line">var a = 5; var b = 3; if a > b and b > 0 { print("Both conditions true!"); } else { print("Condition false."); }</div>
+                    <div class="repl-output-line">for (var i = 0; i < 2; i = i + 1) { print("Loop: {i}"); }</div>
+                    <div class="repl-output-line">Note: Type annotations (e.g., `: int`) are ignored. Error handling is basic.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download">
+        <div class="container">
+            <h3 class="animate-on-scroll">Ready to Dive into Crimson?</h3>
+            <p class="animate-on-scroll">
+                Download the latest version of the Crimson compiler and start building amazing applications today!
+            </p>
+            <a href="#" class="button animate-on-scroll">
+                Download Crimson (v1.0.0)
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Crimson Language. All rights reserved.</p>
+            <p>This is a dummy site and most of the things about performance and what not are just there</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Section Animations
+        anime({
+            targets: '.hero-section h2',
+            opacity: [0, 1],
+            translateY: [-20, 0],
+            duration: 1000,
+            easing: 'easeOutQuad'
+        });
+
+        anime({
+            targets: '.hero-section .hero-span-text',
+            opacity: [0, 1],
+            scale: [0.8, 1],
+            delay: 500,
+            duration: 800,
+            easing: 'easeOutElastic(1, .8)'
+        });
+
+        anime({
+            targets: '.hero-description',
+            opacity: [0, 1],
+            translateY: [-20, 0],
+            delay: 700,
+            duration: 1000,
+            easing: 'easeOutQuad'
+        });
+
+        anime({
+            targets: '.hero-button',
+            opacity: [0, 1],
+            scale: [0.5, 1],
+            delay: 1000,
+            duration: 1000,
+            easing: 'easeOutBack'
+        });
+
+        // Function to check if an element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // General scroll-triggered animations
+        const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+        const featureCards = document.querySelectorAll('.feature-card');
+        const exampleBlocks = document.querySelectorAll('.example-block');
+        const replSectionElements = document.querySelectorAll('#repl-section .animate-on-scroll');
+
+
+        function handleScrollAnimations() {
+            animateOnScrollElements.forEach(element => {
+                if (isInViewport(element) && !element.dataset.animated) {
+                    anime({
+                        targets: element,
+                        opacity: [0, 1],
+                        translateY: [-20, 0],
+                        duration: 800,
+                        easing: 'easeOutQuad'
+                    });
+                    element.dataset.animated = 'true'; // Mark as animated
+                }
+            });
+
+            featureCards.forEach((card, index) => {
+                if (isInViewport(card) && !card.dataset.animated) {
+                    anime({
+                        targets: card,
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        duration: 800,
+                        delay: index * 100, // Stagger effect
+                        easing: 'easeOutQuad'
+                    });
+                    card.dataset.animated = 'true';
+                }
+            });
+
+            exampleBlocks.forEach((block, index) => {
+                if (isInViewport(block) && !block.dataset.animated) {
+                    anime({
+                        targets: block,
+                        opacity: [0, 1],
+                        translateX: [-50, 0],
+                        duration: 800,
+                        delay: index * 150, // Stagger effect
+                        easing: 'easeOutQuad'
+                    });
+                    block.dataset.animated = 'true';
+                }
+            });
+
+            // REPL section animation
+            replSectionElements.forEach(element => {
+                if (isInViewport(element) && !element.dataset.animated) {
+                    anime({
+                        targets: element,
+                        opacity: [0, 1],
+                        translateY: [-20, 0],
+                        duration: 800,
+                        easing: 'easeOutQuad'
+                    });
+                    element.dataset.animated = 'true';
+                }
+            });
+        }
+
+        // Initial check on load
+        document.addEventListener('DOMContentLoaded', handleScrollAnimations);
+        // Check on scroll
+        window.addEventListener('scroll', handleScrollAnimations);
+    </script>
+    <!-- Highlight.js initialization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Initialize highlight.js after all content is loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+    <script src="repl.js"></script>
+</body>
+</html>
